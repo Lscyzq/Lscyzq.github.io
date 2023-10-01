@@ -2,16 +2,16 @@
 //在接入凉腕播放器之前，请您熟知以下内容：
 //接入凉腕需要添加阿凉联系方式（Q 3166360451/V lscyzq）如果你已经申请了添加阿凉为好友，但是阿凉并没有通过您的请求，您任然可以提前接入凉腕播放器并允许上架应用市场（谁叫这是阿凉的问题呢~）；
 //您要确保您不会通过凉腕做任何不正当的行为（包括但不限于播放赌博、色情、有损国家荣誉的内容），若有发现，后果自负，您的行为与凉腕播放器没有任何关系；
-//凉腕播放器的享有权和最终解释权始终归阿凉所有。
+//凉腕播放器的享有权和最终解释权始终归凉生初霜（阿凉）所有。
 
 //下面开始接入教程咯~
 //接入的方法是通过Intent意图传入凉腕播放器视频直链（注意是直链!)链接（必须）、视频名称（必须）、哔哩哔哩官方xml格式弹幕文件（可选）。
 Intent intent = new Intent(); //这里申明Intent为intent，可不变。
 intent.setClassName("com.aliangmaker.media","com.aliangmaker.meida.GetIntentActivity"); //这里指定了凉腕播放器接口包名以及活动，请原谅阿凉，这里的“media”写错了，但是这句话却一个字也不能改！
 intent.setAction(Intent.ACTION_VIEW); //这句话一字不改。
-intent.setData(Uri.parse(videourl)); //这里的“videourl”为String类型，需要更改为您的直链（直链！！！）。
-intent.putExtra("danmaku_url", danmakuurl); //这里可选，如果您没有弹幕文件，可以不写这句话即可；如果您需要传递弹幕文件，这里的（第二个参数）“danmakuurl”更改为你的弹幕文件直链。
-intent.putExtra("title", title); //这里的（第二个参数）“title”请更换为您的视频标题。
+intent.setData(Uri.parse(your_videourl)); //这里的“your_videourl”为String类型，需要更改为您的直链（直链！！！）。
+intent.putExtra("danmaku_url", Uri.parse(your_danmakuurl)); //这里可选，如果您没有弹幕文件，可以不写这句话即可；如果您需要传递弹幕文件，这里的“your_danmakuurl”更改为你的弹幕文件直链。
+intent.putExtra("title", your_title); //这里的“your_title”请更换为您的视频标题。
 startActivity(intent); //开始传递，一字不改。
 
 //以上就是凉腕播放器的调用接口咯~
@@ -19,3 +19,4 @@ startActivity(intent); //开始传递，一字不改。
 //made by bilibili@凉生初霜
 //2023年8月24日
 //update 2023年8月25日
+//update 2023年10月1日
