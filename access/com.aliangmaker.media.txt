@@ -6,6 +6,25 @@
 
 //下面开始接入教程咯~
 //接入的方法是通过Intent意图传入凉腕播放器视频直链（注意是直链!)链接（必须）、视频名称（必须）、哔哩哔哩官方xml格式弹幕文件（可选）。
+
+//对于4.0.0及以上版本接入方法：
+Intent intent = new Intent(); //这里申明Intent为intent，可不变。
+intent.setClassName("com.aliangmaker.media","com.aliangmaker.media.PlayVideoActivity"); //这里指定了凉腕播放器接口包名以及活动，这句话却一个字也不能改！
+intent.setAction(Intent.ACTION_VIEW); //这句话一字不改。
+//基础传入（必须传入）：
+intent.setData(Uri.parse(your_video_path)); //这里的“your_video_path”为String类型，请传入您的视频地址（本地或者网络均可）。
+intent.putExtra("name", your_video_name); //这里的“your_video_name”为String类型，请传入您的视频标题。
+//可选传入：
+intent.putExtra("danmaku", your_danmaku_path); //这里的“your_danmaku_path”为String类型，请传入您的哔哩哔哩xml类型弹幕地址（本地或网络均可）。
+intent.putExtra("agent", your_agnet); //这里的“your_agnet”为String类型，您可以设置您的代理。
+//传入cookie的方法如下：
+Map<String,String> headers = new HashMap<>();
+        headers.put(xxx, xxx); //例如：headers.put("Cookie", "123"); headers.put("Origin","456");。
+intent.putExtra("cookie", (Serializable)headers);
+startActivity(intent);
+
+
+//对于4.0.0以下的版本接入方法（不推荐使用）：
 Intent intent = new Intent(); //这里申明Intent为intent，可不变。
 intent.setClassName("com.aliangmaker.media","com.aliangmaker.meida.GetIntentActivity"); //这里指定了凉腕播放器接口包名以及活动，请原谅阿凉，这里的“media”写错了，但是这句话却一个字也不能改！
 intent.setAction(Intent.ACTION_VIEW); //这句话一字不改。
@@ -20,3 +39,4 @@ startActivity(intent); //开始传递，一字不改。
 //2023年8月24日
 //update 2023年8月25日
 //update 2023年10月1日
+//update 2024年3月9日
