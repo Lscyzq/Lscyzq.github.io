@@ -15,6 +15,7 @@ intent.setAction(Intent.ACTION_VIEW); //这句话一字不改。
 intent.setData(Uri.parse(your_video_path)); //这里的“your_video_path”为String类型，请传入您的视频地址（本地或者网络均可）。
 intent.putExtra("name", your_video_name); //这里的“your_video_name”为String类型，请传入您的视频标题。
 //可选传入：
+intent.putExtra("progress", your_video_progress); //这里的“your_video_progress”为int类型，请传入您的视频进度。
 intent.putExtra("danmaku", your_danmaku_path); //这里的“your_danmaku_path”为String类型，请传入您的哔哩哔哩xml类型弹幕地址（本地或网络均可）。
 intent.putExtra("agent", your_agnet); //这里的“your_agnet”为String类型，您可以设置您的代理。
 //传入cookie的方法如下：
@@ -40,3 +41,4 @@ startActivity(intent); //开始传递，一字不改。
 //update 2023年8月25日
 //update 2023年10月1日
 //update 2024年3月9日
+//update 2024年3月11日
