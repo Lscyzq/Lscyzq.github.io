@@ -23,7 +23,16 @@ Map<String,String> headers = new HashMap<>();
         headers.put(xxx, xxx); //例如：headers.put("Cookie", "123"); headers.put("Origin","456");。
 intent.putExtra("cookie", (Serializable)headers);
 startActivity(intent);
-
+//若您需要获取视频进度回调，则将“startActivity(intent);”进行如下修改并增加如下内容：
+startActivityForResult(intent, REQUEST_CODE); //这里的REQUEST_CODE乱写即可
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode == Activity.RESULT_OK) { //若播放错误或者失败，则会返回Activity.RESULT_CANCELED
+    // 从Intent中获取返回的数据
+    调用data.getIntExtra("progress",0);并赋值即可得到回调进度
+    }
+}
 
 //对于4.0.0以下的版本接入方法（不推荐使用）：
 Intent intent = new Intent(); //这里申明Intent为intent，可不变。
@@ -42,3 +51,4 @@ startActivity(intent); //开始传递，一字不改。
 //update 2023年10月1日
 //update 2024年3月9日
 //update 2024年3月11日
+//update 2024年8月11日
